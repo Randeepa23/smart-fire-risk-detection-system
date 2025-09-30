@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, ReactNode } from 'react
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
   user: User | null;
@@ -34,6 +35,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [userRole, setUserRole] = useState<'admin' | 'operator' | null>(null);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const fetchUserRole = async (userId: string) => {
     try {
@@ -228,6 +230,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         description: error.message,
         variant: "destructive",
       });
+    } else {
+      // Redirect to landing page after successful sign out
+      navigate('/');
     }
   };
 

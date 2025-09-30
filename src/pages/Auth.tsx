@@ -22,7 +22,7 @@ export default function Auth() {
     console.log('Auth page - user state changed:', user?.email);
     if (user) {
       console.log('User is authenticated, redirecting to dashboard');
-      navigate('/');
+      navigate('/dashboard');
     }
   }, [user, navigate]);
 

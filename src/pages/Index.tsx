@@ -10,7 +10,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('Index page - Auth state:', { user: user?.email, loading });
+    console.log('Dashboard page - Auth state:', { user: user?.email, loading });
     if (!loading && !user) {
       console.log('Navigating to /auth');
       // Add a small delay to see if this helps with navigation timing
@@ -20,7 +20,7 @@ const Index = () => {
     }
   }, [user, loading, navigate]);
 
-  console.log('Index render - Auth state:', { user: user?.email, loading });
+  console.log('Dashboard render - Auth state:', { user: user?.email, loading });
 
   if (loading) {
     console.log('Showing loading screen');
