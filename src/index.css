@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Environmental Fire Risk Detection System Design System
+All colors MUST be HSL. Nature-inspired environmental monitoring theme with fire detection.
+*/
+
+@layer base {
+  :root {
+    /* Environmental dark theme with green accents */
+    --background: 150 15% 8%;
+    --foreground: 150 10% 98%;
+
+    --card: 150 12% 12%;
+    --card-foreground: 150 10% 98%;
+
+    --popover: 150 12% 12%;
+    --popover-foreground: 150 10% 98%;
+
+    --primary: 142 70% 45%;
+    --primary-foreground: 150 10% 98%;
+
+    --secondary: 150 8% 20%;
+    --secondary-foreground: 150 10% 98%;
+
+    --muted: 150 8% 16%;
+    --muted-foreground: 150 15% 65%;
+
+    --accent: 142 60% 35%;
+    --accent-foreground: 150 10% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 150 10% 98%;
+
+    --border: 150 10% 18%;
+    --input: 150 10% 18%;
+    --ring: 142 70% 45%;
+
+    /* Fire Risk Status Colors */
+    --safe: 142 76% 36%;
+    --safe-foreground: 150 10% 98%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 222 84% 5%;
+    --danger: 0 84% 60%;
+    --danger-foreground: 150 10% 98%;
+
+    /* Sensor Data Colors - Environmental theme */
+    --temperature: 14 91% 60%;
+    --humidity: 200 70% 50%;
+    --co2: 262 52% 47%;
+    --co: 39 84% 56%;
+    --hydrogen: 173 58% 39%;
+
+    /* Gradients - Nature inspired */
+    --gradient-primary: linear-gradient(135deg, hsl(142 70% 45%), hsl(160 75% 50%));
+    --gradient-safe: linear-gradient(135deg, hsl(142 76% 36%), hsl(160 84% 39%));
+    --gradient-warning: linear-gradient(135deg, hsl(45 93% 47%), hsl(35 91% 62%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 72% 51%));
+    --gradient-environment: linear-gradient(135deg, hsl(142 70% 25%), hsl(150 50% 15%));
+    
+    /* Glow effects */
+    --glow-primary: 0 0 20px hsl(142 70% 45% / 0.3);
+    --glow-safe: 0 0 20px hsl(142 76% 36% / 0.3);
+    --glow-warning: 0 0 20px hsl(45 93% 47% / 0.3);
+    --glow-danger: 0 0 20px hsl(0 84% 60% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --pulse-danger: pulse-danger 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Fire risk status indicators */
+  .status-safe {
+    @apply bg-gradient-to-r from-safe to-safe/80 text-safe-foreground;
+    box-shadow: var(--glow-safe);
+  }
+  
+  .status-warning {
+    @apply bg-gradient-to-r from-warning to-warning/80 text-warning-foreground;
+    box-shadow: var(--glow-warning);
+  }
+  
+  .status-danger {
+    @apply bg-gradient-to-r from-danger to-danger/80 text-danger-foreground;
+    box-shadow: var(--glow-danger);
+    animation: var(--pulse-danger);
+  }
+
+  /* Sensor cards */
+  .sensor-card {
+    @apply bg-card border border-border rounded-lg p-4 transition-all duration-300 hover:border-primary/30;
+  }
+
+  /* Dashboard grid - Enhanced mobile responsiveness */
+  .dashboard-grid {
+    @apply grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6;
+  }
+}
+
+@keyframes pulse-danger {
+  0%, 100% {
+    box-shadow: var(--glow-danger);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(0 84% 60% / 0.5), 0 0 40px hsl(0 84% 60% / 0.3);
+  }
+}
